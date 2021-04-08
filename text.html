@@ -1,0 +1,11 @@
+var typepate = document.getElementById('typepate');
+var missTypepate = document.getElementById('missTypepate');
+var pateValid = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
+
+var pate = document.getElementById('pate');
+
+<div id="typepate">
+    <label for='nom'>Votre type de pate preferer ?</label><br>
+    <input type='text' name='choixpate' id='choixpate' maxlength='30' required><br>
+    <span id='missTypepate'></span><br>
+</div>
