@@ -25,42 +25,46 @@
 			<span id='missPrenom'></span><br>
 
 			<label for='email'>Votre email:</label><br>
-			<input type='email' id='email' required><br>
+			<input type='email' name='email' id='email' required><br>
 			<span id='missEmail'></span><br>
 
 			<label for='date'>Date</label><br>
-			<input type='date' id='start' name='trip-start' value='2021-04-07' min='1960-04-07' max='2021-04-07'><br>
+			<input type='date' id='start' name='date' value='2021-04-07' min='1960-04-07' max='2021-04-07'><br>
 			<span id='missDate'></span>
 
 			
 			<p>Frite ou pate ? : </p>
-			<input type='radio' name='frite'  id='frite' onclick="ShowDiv(2)"
+			<input type='radio' name='frite'  value='frite' id='frite' onclick="ShowDiv(2)"
 			checked='checked' >
 			<label for='frite' class='inline'>frite</label><br>
-			<input type='radio' name='frite'  id='pate' onclick="ShowDiv(1)">
+			<input type='radio' name='frite' value='pate' id='pate' onclick="ShowDiv(1)">
 			<label for='pate' class='inline'>pate</label><br>
 			
 
-			<div id="sauce">
+			<div id='choixsauce'>
 				<p>Sauce préféré: </p>
-				<input type='radio' name='sauce'  id='biggy'>
+				<input type='radio' name='sauce' value='biggy' id='biggy'>
 				<label for='biggy' class='inline'>biggy</label><br>
-				<input type='radio' name='sauce'  id='blanche'>
+
+				<input type='radio' name='sauce'  value='blanche' id='blanche'>
 				<label for='blanche' class='inline'>blanche</label><br>
-				<input type='radio' name='sauce'  id='moutarde'>
+
+				<input type='radio' name='sauce' value='moutarde'  id='moutarde'>
 				<label for='moutarde' class='inline'>moutarde</label><br>
-				<input type='radio' name='sauce'  id='ketchup'>
+
+				<input type='radio' name='sauce' value='ketchup' id='ketchup'>
 				<label for='ketchup' class='inline'>ketchup</label><br>
-				<input type='radio' name='sauce'  id='mayo'>
+
+				<input type='radio' name='sauce' value='mayo' id='mayo'>
 				<label for='mayo' class='inline'>mayo</label><br>
 				
 			</div>
 			<div id="typepate">
 				<label for='nom'>Votre type de pate preferer ?</label><br>
-				<input type='text' name='choixpate' id='choixpate' maxlength='30' required><br>
+				<input type='text' name='choixpate' id='choixpate' maxlength='30' ><br>
 				<span id='missTypepate'></span><br>
 			</div>
-			<input type='submit' value='Valider' id='send'><br>
+			<input type='submit' name='submit' value='Valider' id='send'><br>
         </form>
 		<script>
 
@@ -163,15 +167,15 @@
                     missDate.textContent = 'date valide';
                     missDate.style.color = 'green';
 				}*/
-				if(typepate.validity.valueMissing){
-					event.preventDefault();
+				/*if(typepate.validity.valueMissing){
+					
 					missTypepate.textContent = 'type de pate manquant';
 					missTypepate.style.color = 'red';
 				
 				}
 				//on regarde si le format du nom est correct
 				else if (pateValid.test(typepate.value) == false){
-                    event.preventDefault();
+                    
                     missTypepate.textContent = 'Format incorrect';
                     missTypepate.style.color = 'orange';
 				}
@@ -179,7 +183,7 @@
 				else{
                     missTypepate.textContent = 'pate valide';
                     missTypepate.style.color = 'green';
-				}
+				}*/
 
 
 		
@@ -187,7 +191,7 @@
 			function ShowDiv (E)
 			{
 				document.getElementById("typepate").style.display = (E == 1) ? 'block' : 'none';
-				document.getElementById("sauce").style.display = (E == 2) ? 'block' : 'none';
+				document.getElementById("choixsauce").style.display = (E == 2) ? 'block' : 'none';
 			}
 
 
@@ -199,4 +203,3 @@
 	
 	</body>		
 </html>
-
