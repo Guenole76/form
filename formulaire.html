@@ -60,8 +60,8 @@
 				<span id='missSauce'></span>
 			</div>
 			<div id="typedepate" >
-				<label for='nom'>Votre type de pate preferer ?</label><br>
-				<input type='text' name='choixpate' id='choixpate' maxlength='30' ><br>
+				<label for='choixpate'>Votre type de pate preferer ?</label><br>
+				<input type='text' name='choixpate' id='choixpate'><br>
 				<span id='missTypepate'></span><br>
 			</div>
 			<input type='submit' name='submit' value='Valider' id='send'><br>
@@ -153,29 +153,27 @@
                     missEmail.style.color = 'green';
 				}
 
-				/*if(document.querySelector('#pate').checked = true){
-					if(typepate.validity.valueMissing){
-						event.preventDefault();
-						missTypepate.textContent = 'type de pate manquant';
-						missTypepate.style.color = 'red';
-					
-					}
-					//on regarde si le format du nom est correct
-					else if (pateValid.test(typepate.value) == false){
-						event.preventDefault();
-						missTypepate.textContent = 'Format incorrect';
-						missTypepate.style.color = 'orange';
-					}
-					// sinon on dit que le nom est valide
-					else{
-						missTypepate.textContent = 'pate valide';
-						missTypepate.style.color = 'green';
-					}
-				}*/
+				if(typepate.validity.valueMissing){
+					event.preventDefault();
+					missTypepate.textContent = 'Email manquant';
+					missTypepate.style.color = 'red';
+				}
+				//on regarde si le format du type de pate est correct
+				else if (pateValid.test(typepate.value) == false){
+                    event.preventDefault();
+                    missTypepate.textContent = 'Format incorrect';
+                    missTypepate.style.color = 'orange';
+				}
+				// sinon on dit que le type de pate est valide
+				else{ 
+                    missTypepate.textContent = 'pate valide';
+                    missTypepate.style.color = 'green';
+				}
+			
 				
 
 				
-				if(document.querySelector('#frite').checked = true){
+				/*if(document.querySelector('#frite').checked = true){
 					if(document.querySelector('#biggy').checked === false && document.querySelector('#blanche').checked === false && document.querySelector('#moutarde').checked === false && document.querySelector('#ketchup').checked === false && document.querySelector('#mayo').checked === false){
 						event.preventDefault();
 						missSauce.textContent = 'type de sauce manquant';
@@ -186,7 +184,7 @@
 						missSauce.style.color = 'green';
 					}
 
-				}
+				}*/
 
 				
 			
