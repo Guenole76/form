@@ -15,7 +15,7 @@
         <h1>Formulaire</h1>
 
 
-        <form method="post" action="form.php">
+        <form name='demo' method="post" action="form.php">
 			<label for='nom'>Votre nom</label><br>
 			<input type='text' name='nom' id='nom' maxlength='30' required><br>
 			<span id='missNom'></span><br>
@@ -61,7 +61,7 @@
 			</div>
 			<div id="typedepate"  style="display:none;" >
 				<label for='choixpate'>Votre type de pate preferer ?</label><br>
-				<input type='text' name='choixpate' id='choixpate' required><br>
+				<input type='text' name='choixpate' id='choixpate' ><br>
 				<span id='missTypepate'></span><br>
 			</div>
 			<input type='submit' name='submit' value='Valider' id='send'><br>
@@ -95,7 +95,7 @@
 			var missTypepate = document.getElementById('missTypepate');
 			var pateValid = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
 
-			var form = document.querySelector("form");
+			/*var form = document.querySelector("form");
 			var log = document.querySelector("#log");
 
 			form.addEventListener("submit", function(event) {
@@ -106,7 +106,7 @@
 			};
 			log.innerText = output;
 			event.preventDefault();
-			}, false);
+			}, false);*/
 
 			formValid.addEventListener('click', validation);
 			
@@ -172,20 +172,20 @@
 				
 
 				
-				/*if(document.querySelector('#frite').checked = true){
+				if(document.querySelector('#frite').checked = true){
 					if(document.querySelector('#biggy').checked === false && document.querySelector('#blanche').checked === false && document.querySelector('#moutarde').checked === false && document.querySelector('#ketchup').checked === false && document.querySelector('#mayo').checked === false){
 						event.preventDefault();
 						missSauce.textContent = 'type de sauce manquant';
 						missSauce.style.color = 'red';
 					}
-					if(document.querySelector('#biggy').checked = true)
+					if(document.querySelector('#biggy').checked = true){
 						missSauce.textContent = 'sauce valide';
 						missSauce.style.color = 'green';
 					}
-
-				} */
-				/*if (document.querySelector('pate').checked === true){
-					if(typepate.validity.valueMissing){
+				}
+				
+				if(document.querySelector('#pate').checked = true){
+					if(typepate.value == ""){
 						event.preventDefault();
 						missTypepate.textContent = 'type de pate manquant';
 						missTypepate.style.color = 'red';
@@ -201,22 +201,35 @@
 						missTypepate.textContent = 'pate valide';
 						missTypepate.style.color = 'green';
 					}
-				}*/
+				}
 
 				
 			
-
+			}
 				
 		
-			}
+			
 			function ShowDiv (E)
 			{
 				document.getElementById("typedepate").style.display = (E == 1) ? 'block' : 'none';
 				document.getElementById("choixsauce").style.display = (E == 2) ? 'block' : 'none';
 			}
+			/*
+			function valButton(btn) {
+				var cnt = -1;
+				for (var i=btn.length-1; i > -1; i--) {
+					if (btn[i].checked) {cnt = i; i = -1;}
+				}
+				if (cnt > -1) return btn[cnt].value;
+				else return null;
+			}
 
-
-
+			var btn = valButton(form.frite);
+			if (btn == null) alert('No radio button selected');
+			else alert('Button value ' + btn + ' selected');*/
+			const form = document.forms.demo;
+			const radios = form.elements.frite;
+			console.log(radios);
 
 		</script>
 
