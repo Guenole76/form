@@ -57,9 +57,9 @@
 
 				<input type='radio' name='sauce' value='mayo' id='mayo'>
 				<label for='mayo' class='inline'>mayo</label><br>
-				
+				<span id='missSauce'></span>
 			</div>
-			<div id="typepate">
+			<div id="typedepate" >
 				<label for='nom'>Votre type de pate preferer ?</label><br>
 				<input type='text' name='choixpate' id='choixpate' maxlength='30' ><br>
 				<span id='missTypepate'></span><br>
@@ -85,6 +85,8 @@
 			var missDate = document.getElementById('missDate');
 			var dateValid = /^(((0[1-9]|[12][0-9]|30)[-/]?(0[13-9]|1[012])|31[-/]?(0[13578]|1[02])|(0[1-9]|1[0-9]|2[0-8])[-/]?02)[-/]?[0-9]{4}|29[-/]?02[-/]?([0-9]{2}(([2468][048]|[02468][48])|[13579][26])|([13579][26]|[02468][048]|0[0-9]|1[0-6])00))$/;
 
+			var typesauce = document.getElementById('sauce');
+			var missTypesauce = document.getElementById('missSauce');
 			
 			var typepate = document.getElementById('choixpate');
 			var missTypepate = document.getElementById('missTypepate');
@@ -151,46 +153,50 @@
                     missEmail.style.color = 'green';
 				}
 
-				/*if(date.validity.valueMissing){
-					event.preventDefault();
-					missDate.textContent = 'Email manquant';
-					missDate.style.color = 'red';
-				}
-				//on regarde si le format de la date est correct
-				/*else if (dateValid.test(date.value) == false){
-                    event.preventDefault();
-                    missDate.textContent = 'Format incorrect';
-                    missDate.style.color = 'orange';
-				}*/
-				// sinon on dit que la date est valide
-				/*else{ 
-                    missDate.textContent = 'date valide';
-                    missDate.style.color = 'green';
-				}*/
-				/*if(typepate.validity.valueMissing){
+				/*if(document.querySelector('#pate').checked = true){
+					if(typepate.validity.valueMissing){
+						event.preventDefault();
+						missTypepate.textContent = 'type de pate manquant';
+						missTypepate.style.color = 'red';
 					
-					missTypepate.textContent = 'type de pate manquant';
-					missTypepate.style.color = 'red';
-				
-				}
-				//on regarde si le format du nom est correct
-				else if (pateValid.test(typepate.value) == false){
-                    
-                    missTypepate.textContent = 'Format incorrect';
-                    missTypepate.style.color = 'orange';
-				}
-				// sinon on dit que le nom est valide
-				else{
-                    missTypepate.textContent = 'pate valide';
-                    missTypepate.style.color = 'green';
+					}
+					//on regarde si le format du nom est correct
+					else if (pateValid.test(typepate.value) == false){
+						event.preventDefault();
+						missTypepate.textContent = 'Format incorrect';
+						missTypepate.style.color = 'orange';
+					}
+					// sinon on dit que le nom est valide
+					else{
+						missTypepate.textContent = 'pate valide';
+						missTypepate.style.color = 'green';
+					}
 				}*/
+				
 
+				
+				if(document.querySelector('#frite').checked = true){
+					if(document.querySelector('#biggy').checked === false && document.querySelector('#blanche').checked === false && document.querySelector('#moutarde').checked === false && document.querySelector('#ketchup').checked === false && document.querySelector('#mayo').checked === false){
+						event.preventDefault();
+						missSauce.textContent = 'type de sauce manquant';
+						missSauce.style.color = 'red';
+					}
+					else{
+						missSauce.textContent = 'sauce valide';
+						missSauce.style.color = 'green';
+					}
 
+				}
+
+				
+			
+
+				
 		
 			}
 			function ShowDiv (E)
 			{
-				document.getElementById("typepate").style.display = (E == 1) ? 'block' : 'none';
+				document.getElementById("typedepate").style.display = (E == 1) ? 'block' : 'none';
 				document.getElementById("choixsauce").style.display = (E == 2) ? 'block' : 'none';
 			}
 
