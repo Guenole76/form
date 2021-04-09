@@ -59,13 +59,16 @@
 				<label for='mayo' class='inline'>mayo</label><br>
 				<span id='missSauce'></span>
 			</div>
-			<div id="typedepate" >
+			<div id="typedepate"  style="display:none;" >
 				<label for='choixpate'>Votre type de pate preferer ?</label><br>
-				<input type='text' name='choixpate' id='choixpate'><br>
+				<input type='text' name='choixpate' id='choixpate' required><br>
 				<span id='missTypepate'></span><br>
 			</div>
 			<input type='submit' name='submit' value='Valider' id='send'><br>
         </form>
+		<pre id="log">
+		</pre>
+		
 		<script>
 
 			var formValid = document.getElementById('send');
@@ -91,8 +94,19 @@
 			var typepate = document.getElementById('choixpate');
 			var missTypepate = document.getElementById('missTypepate');
 			var pateValid = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/;
-			
-		
+
+			var form = document.querySelector("form");
+			var log = document.querySelector("#log");
+
+			form.addEventListener("submit", function(event) {
+			var data = new FormData(form);
+			var output = "";
+			for (const entry of data) {
+				output = entry[0] + "=" + entry[1] + "\r";
+			};
+			log.innerText = output;
+			event.preventDefault();
+			}, false);
 
 			formValid.addEventListener('click', validation);
 			
@@ -152,24 +166,9 @@
                     missEmail.textContent = 'email valide';
                     missEmail.style.color = 'green';
 				}
+				
 
-				if(typepate.validity.valueMissing){
-					event.preventDefault();
-					missTypepate.textContent = 'Email manquant';
-					missTypepate.style.color = 'red';
-				}
-				//on regarde si le format du type de pate est correct
-				else if (pateValid.test(typepate.value) == false){
-                    event.preventDefault();
-                    missTypepate.textContent = 'Format incorrect';
-                    missTypepate.style.color = 'orange';
-				}
-				// sinon on dit que le type de pate est valide
-				else{ 
-                    missTypepate.textContent = 'pate valide';
-                    missTypepate.style.color = 'green';
-				}
-			
+				
 				
 
 				
@@ -179,11 +178,29 @@
 						missSauce.textContent = 'type de sauce manquant';
 						missSauce.style.color = 'red';
 					}
-					else{
+					if(document.querySelector('#biggy').checked = true)
 						missSauce.textContent = 'sauce valide';
 						missSauce.style.color = 'green';
 					}
 
+				} */
+				/*if (document.querySelector('pate').checked === true){
+					if(typepate.validity.valueMissing){
+						event.preventDefault();
+						missTypepate.textContent = 'type de pate manquant';
+						missTypepate.style.color = 'red';
+					}
+					//on regarde si le format du type de pate est correct
+					else if (pateValid.test(typepate.value) == false){
+						event.preventDefault();
+						missTypepate.textContent = 'Format incorrect';
+						missTypepate.style.color = 'orange';
+					}
+					// sinon on dit que le type de pate est valide
+					else{ 
+						missTypepate.textContent = 'pate valide';
+						missTypepate.style.color = 'green';
+					}
 				}*/
 
 				
